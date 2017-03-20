@@ -122,6 +122,12 @@ public class TaskListActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        realm.close();
+    }
+
     public void changeTaskDone(final String taskId) {
         realm.executeTransactionAsync(new Realm.Transaction() {
             @Override
